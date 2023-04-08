@@ -13,6 +13,10 @@ jobs:
         run: npm install xdccjs
       - name: irc download
         run: node irc-down.js
+      - name: publish dotnet
+        run: dotnet publish  MegaUpload/MegaUpload.sln --sc true /p:PublishSingleFile=true -o mega
+      - name: git MegaUpload
+        run: git clone https://github.com/nightshadow92/MegaUpload.git
       - name: upload to mega
         shell: pwsh
         run: gci -file | where {$_.name -match "subsplease"} | foreach {dotnet .\mega\MegaUpload --file $_.FullName}
