@@ -15,4 +15,4 @@ jobs:
         run: node irc-down.js
       - name: upload to mega
         shell: pwsh
-        run: gci -file | where {$_.name -match "subsplease"} | foreach {.\mega\MegaUpload --file $_.FullName}
+        run: gci -file | where {$_.name -match "subsplease"} | foreach {dotnet .\mega\MegaUpload --file $_.FullName}
