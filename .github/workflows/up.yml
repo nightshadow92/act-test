@@ -10,7 +10,7 @@ jobs:
         with:
           node-version: '16'
       - name: Install xdccjs
-        run: npm install xdccjs -g
+        run: npm install xdccjs
       - name: irc download
         run: node irc-down.js
       - name: upload to mega
