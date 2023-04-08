@@ -6,7 +6,7 @@ let opts = {
     host: 'irc.rizon.net', // IRC hostname                                                   - required
     port: 6667, // IRC port                                                                   - default: 6667
     retry: 3, // Nb of retries before skip                                                    - default: 1
-    timeout: 5, // Nb of seconds before a download is considered timed out                   - default: 30
+    timeout: 1, // Nb of seconds before a download is considered timed out                   - default: 30
     verbose: true, // Display download progress and jobs status                               - default: false
     botNameMatch: false,
     path: process.cwd()
