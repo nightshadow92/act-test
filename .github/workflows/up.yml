@@ -19,4 +19,6 @@ jobs:
         run: dotnet publish  MegaUpload/MegaUpload.sln --sc true /p:PublishSingleFile=true -o mega
       - name: upload to mega
         shell: pwsh
+        env:
+          MEGA_AUTH: ${{ secrets.MEGA_AUTH }}
         run: gci -file | where {$_.name -match "subsplease"} | foreach {.\mega\MegaUpload --file $_.FullName}
