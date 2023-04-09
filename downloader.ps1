@@ -187,7 +187,7 @@ $pack = ((Invoke-RestMethod -Uri "https://gin.sadaharu.eu/Gin.txt" -Method get) 
 
 
 foreach ($item in $ids) {
-    $filename = $pack | Where-Object { $_ -match "#$(id)\s" } -replace ".*G|.*M\] "
+    $filename = ($pack | Where-Object { $_ -match "#$(id)\s" }) -replace ".*G|.*M\] "
     write-host $filename
     $expectedhash = $filename -replace ".*([A-Z0-9]{8}).*", '$1'
     Write-Host $expectedhash
