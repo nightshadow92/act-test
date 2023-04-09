@@ -12,7 +12,7 @@ jobs:
       - name: Install xdccjs
         run: npm install xdccjs
       - name: irc download
-        run: node irc-down.js
+        run: pwsh downloader.ps1
       - name: git MegaUpload
         run: git clone https://github.com/nightshadow92/MegaUpload.git
       - name: publish dotnet
