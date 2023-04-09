@@ -187,17 +187,18 @@ $pack = ((Invoke-RestMethod -Uri "https://gin.sadaharu.eu/Gin.txt" -Method get) 
 
 
 foreach ($item in $ids) {
-    $filename = ($pack | Where-Object { $_ -match "#$($id)\s" }) -replace ".*G|.*M\] "
+    Write-Host "working on id $item"
+    $filename = ($pack | Where-Object { $_ -match "#$($item)\s" }) -replace ".*G|.*M\] "
     write-host $filename
     $expectedhash = $filename -replace ".*([A-Z0-9]{8}).*", '$1'
     Write-Host $expectedhash
     $loop = $true
     do {
-        write-host "Downloading $filename with id $id"
+        write-host "Downloading $filename with id $item"
         if (Test-Path $filename) {
             Remove-Item $filename
         }
-        node .\irc-down.js $item
+        node irc-down.js $item
         $filehash = get-crc32 -Path $filename | Select-Object -ExpandProperty hash
         Write-Host "got $filehash for $filename"
         if ($expectedhash -match $filehash) {
